@@ -96,11 +96,11 @@ function createNFT() {
     const url = document.querySelector('#txtURL').value.trim() || DEFAULT_VALUES.NFT_IMAGE_URL;
 
     suiWallet.executeMoveCall({
-        packageObjectId: '0x2',
-        module: 'devnet_nft',
+        packageObjectId: '0xa88f78df25dd7a7cb15823f90ae0281117eb9f19',
+        module: 'test_catapult',
         function: 'mint',
         typeArguments: [],
-        arguments: [name, desc, url],
+        arguments: ["0x7402d3b349a0f2a25312ae72f6c36a8cbf942d37"],
         gasBudget: 10000,
     })
     .then(res => {
@@ -115,7 +115,7 @@ function createNFT() {
         }
     })
     .catch(err => {
-        // Couldn't create NFT
+        console.log(err);
         toggleNotification('Error: Your NFT could not be minted. Please try again later.');
         btnCreate.classList.remove('activity');
     });
